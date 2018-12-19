@@ -2,7 +2,7 @@
 The website in this repo will be automatically deployed with its updates in a VM instance hosted on Google Cloud Platform, while the updates are pushed from local machine.
 
 ## How it works
-
+![](assets/README-99589964.png)
 
 ## Files in VM
 
@@ -32,7 +32,18 @@ cd /home/yuqi_tu/SimpleFlaskWebSite
 git pull
 sudo systemctl restart flask
 ```
-* Firstly it pull the repo from Github, then restart Flask in the VM.
+* Firstly it pull the repo from Github, then restart Flask of the Website in the VM.
 
 
 ### File: *flask.service*
+
+```service
+Description=My Simple Flask Website
+After=network.target
+[Service]
+User=root
+ExecStart=/usr/bin/python3 -m flask run --host=0.0.0.0 --port=80
+WorkingDirectory=/home/yuqi_tu/SimpleFlaskWebSite
+#!/bin/bash
+```
+* While *.sh* request to restart the Flask of the WebSite, the *.service* file executes the restart action.
