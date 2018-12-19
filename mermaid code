@@ -1,8 +1,7 @@
-graph LR
-    A[Square Rect] -- Link text --> B((Circle))
-    A --> C(Round Rect)
-    B --> D{Rhombus}
-    C --> D
-
-
-    
+graph TB
+    A(Local Machine: <br> modified website) -- push updated code <br> to Github --> B
+    B(Github Webhook: <br> received pushed notification ) -- send action:POST <br> to VM server --> C
+    C(VM file 'app_vm.py': <br> 1. received POST action <br> 2. run sh. file in VM) --> D
+    D(VM file '.sh': <br> 1. pull website repo form Github <br> 2. restart Flask) --> E
+    E(VM file 'flask.service': <br> run .py file of the WebSite) --> F
+    F(WebSite Updated.)

@@ -1,0 +1,7 @@
+Description=My Simple Flask Website
+After=network.target
+[Service]
+User=root
+ExecStart=/usr/bin/python3 -m flask run --host=0.0.0.0 --port=80
+WorkingDirectory=/home/yuqi_tu/SimpleFlaskWebSite
+#!/bin/bash
