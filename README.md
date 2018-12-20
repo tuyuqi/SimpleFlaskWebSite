@@ -1,5 +1,5 @@
 # Simple Flask WebSite
-The website in this repo will be automatically deployed with its updates in a VM instance hosted on Google Cloud Platform, while the updates are pushed from local machine.
+The website in this repo will be automatically deployed with its updates in a VM instance hosted on Google Cloud Platform, while the updates are pushed from a local machine.
 
 ## How it works
 ![](assets/README-99589964.png)
@@ -20,7 +20,7 @@ def hello_world():
 if __name__ == '__main__':
     app.run()
 ```
-* After the VM instance received the action [POST] from Github Webhook, then run the function `hello_world`.
+* After the VM instance received the action [POST] from Github Webhook, then runs the function `hello_world`.
 * Function `hello_world` calls the *.sh* file to run the actions specified in the file.  
 
 
@@ -32,7 +32,7 @@ cd /home/yuqi_tu/SimpleFlaskWebSite
 git pull
 sudo systemctl restart flask
 ```
-* Firstly it pull the repo from Github, then restart Flask of the Website in the VM.
+* Firstly it pulls the repo from Github, then restarts Flask of the Website in the VM.
 
 
 ### File: *flask.service*
@@ -46,4 +46,4 @@ ExecStart=/usr/bin/python3 -m flask run --host=0.0.0.0 --port=80
 WorkingDirectory=/home/yuqi_tu/SimpleFlaskWebSite
 #!/bin/bash
 ```
-* While *.sh* request to restart the Flask of the WebSite, the *.service* file executes the restart action.
+* While *.sh* requests to restart the Flask of the WebSite, the *.service* file executes the restart action.
